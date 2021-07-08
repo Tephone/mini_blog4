@@ -1,0 +1,6 @@
+%h2 全体タイムライン
+- @blogs.each do |blog|
+  %p= blog.content
+  %p= l blog.created_at
+= link_to 'miniブログを作成する', new_blog_path
+= paginate @blogs
