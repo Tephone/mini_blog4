@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show]
   root 'blogs#index'
   resources :blogs, only: %i[index new create]
+  resources :relationships, only: %i[create destroy]
 end

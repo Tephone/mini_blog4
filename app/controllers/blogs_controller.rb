@@ -2,7 +2,11 @@ class BlogsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index]
 
   def index
-    @blogs = Blog.page(params[:page]).per(1)
+    if user_signed_in?
+      @blogs = Blog.where(user_id: [current_user, *current_user.followings.ids]).page(params[:page]).per(10)
+    else
+      @blogs = Blog.page(params[:page]).per(10)
+    end
   end
 
   def new
