@@ -10,7 +10,7 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = Blog.new(params.require(:blog).permit(:content))
+    @blog = current_user.blogs.build(params.require(:blog).permit(:content))
     if @blog.save
       redirect_to blogs_path, notice: 'miniブログを作成しました'
     else

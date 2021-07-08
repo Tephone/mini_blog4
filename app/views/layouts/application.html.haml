@@ -14,6 +14,10 @@
         .nav-link
           = link_to '全体タイムライン', blogs_path
         .nav-link
+          = link_to 'ユーザー一覧', users_path
+        .nav-link
+          = link_to 'マイページ', user_path(current_user)
+        .nav-link
           = link_to 'ログアウト', destroy_user_session_path, method: :delete
       - else
         .nav-link
