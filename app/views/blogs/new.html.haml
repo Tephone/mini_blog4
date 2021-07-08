@@ -1,0 +1,10 @@
+
+%h3 miniブログ作成画面
+- if @blog.errors.any?
+  - @blog.errors.full_messages.each do |msg|
+    %ul
+      %li= msg
+= form_with(model: @blog) do |f|
+  = f.label :content
+  = f.text_field :content
+  = f.submit

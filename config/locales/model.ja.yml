@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      blog: ブログ
+      user: ユーザー
+    attributes:
+      blog:
+        content: 内容
+      user:
+        name: 名前
+        profile: プロフィール
+        blog_url: ブログURL
