@@ -1,6 +1,8 @@
 class BlogsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index]
+
   def index
-    @blogs = Blog.page(params[:page]).per(10)
+    @blogs = Blog.page(params[:page]).per(1)
   end
 
   def new

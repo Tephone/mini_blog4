@@ -7,8 +7,22 @@
     = csrf_meta_tags
     = csp_meta_tag
     = javascript_pack_tag 'application'
-    = stylesheet_pack_tag 'application'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   %body
+    .navbar.navbar-expand-lg   
+      - if user_signed_in?
+        .nav-link
+          = link_to '全体タイムライン', blogs_path
+        .nav-link
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete
+      - else
+        .nav-link
+          = link_to '全体タイムライン',blogs_path
+        .nav-link
+          = link_to 'サインアップ', new_user_registration_path
+        .nav-link
+          = link_to 'サインイン', new_user_session_path
+
     .container
-      .jumbotron.m-3
+      .jumbotron.m-3 
         = yield
