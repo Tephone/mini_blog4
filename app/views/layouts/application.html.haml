@@ -11,9 +11,9 @@
 
   %body
     .navbar.navbar-expand-lg   
+      .nav-link
+        = link_to '全体タイムライン', blogs_path
       - if user_signed_in?
-        .nav-link
-          = link_to '全体タイムライン', blogs_path
         .nav-link
           = link_to 'ユーザー一覧', users_path
         .nav-link
@@ -21,8 +21,6 @@
         .nav-link
           = link_to 'ログアウト', destroy_user_session_path, method: :delete
       - else
-        .nav-link
-          = link_to '全体タイムライン',blogs_path
         .nav-link
           = link_to 'サインアップ', new_user_registration_path
         .nav-link
