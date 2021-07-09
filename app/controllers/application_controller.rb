@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  http_basic_authenticate_with name: ENV['USER'], password: ENV['PASSWORD'] if Rails.env.production?
+  http_basic_authenticate_with name: ENV.fetch('USER'), password: ENV.fetch('PASSWORD') if Rails.env.production?
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
