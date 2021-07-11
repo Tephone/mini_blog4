@@ -1,0 +1,6 @@
+%h3 「いいね」したユーザー一覧
+
+- @likes.each do |like|
+	%p= like.user.name
+
+= paginate @likes 
