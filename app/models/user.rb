@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :active_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
   has_many :passive_relationships, foreign_key: 'followed_id', class_name: 'Relationship', dependent: :destroy
   has_many :followings, through: :active_relationships, source: :followed
+  has_many :likes, dependent: :destroy
+  has_many :blogs_liked, through: :likes, source: :blog
   has_many :followers, through: :passive_relationships, source: :follower 
   validates :profile, length: {maximum: 200}
   validates :name, presence: true,
