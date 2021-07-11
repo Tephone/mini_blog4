@@ -5,6 +5,11 @@
     %ul
       %li= msg
 = form_with(model: @blog) do |f|
-  = f.label :content
-  = f.text_field :content
+  .field
+    = f.label :content
+    = f.text_field :content
+  .field
+    = f.label :image
+    = f.file_field :image
+
   = f.submit
