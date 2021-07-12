@@ -3,7 +3,8 @@ class BlogsController < ApplicationController
 
   def index
     if user_signed_in?
-      @blogs = Blog.where(user_id: [current_user, *current_user.followings.ids]).page(params[:page])
+      following_blogs_include_mine =  Blog.where(user_id: [current_user, *current_user.followings.ids])
+      @blogs = following_blogs_include_mine.page(params[:page]) 
     else
       @blogs = Blog.page(params[:page])
     end

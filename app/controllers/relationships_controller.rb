@@ -15,4 +15,3 @@ class RelationshipsController < ApplicationController
 		redirect_to blogs_path, notice: "#{active_relationship.followed.name}さんのフォローを解除しました"
 	end
 end
-
