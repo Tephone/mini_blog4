@@ -22,4 +22,9 @@ class BlogsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @blog = Blog.find(params[:id])
+    @comments = @blog.comments
+  end
 end
