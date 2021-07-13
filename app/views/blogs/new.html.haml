@@ -7,4 +7,8 @@
 = form_with(model: @blog) do |f|
   = f.label :content
   = f.text_field :content
+  %br
+  = f.file_field :image
+  = f.hidden_field :image_cache
+  %br
   = f.submit
