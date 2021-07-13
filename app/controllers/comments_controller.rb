@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
     if comment.save
       redirect_to blog_path(blog), notice: 'コメントを作成しました'
     else
-      @comments = blog.comments
       render 'blogs/show'
     end
   end
