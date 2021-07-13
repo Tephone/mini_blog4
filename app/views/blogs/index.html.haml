@@ -2,7 +2,14 @@
 - @blogs.each do |blog|
   %p= l blog.created_at
   %p= blog.content
+  %p= image_tag blog.image.url if blog.image.present?
   -if user_signed_in? && current_user != blog.user
     = render 'relationships/follow_form', user:blog.user
+    = render 'likes/like_form', blog: blog
+    %br
+    = link_to 'コメント', blog_path(blog)
+
+%br
+%br
 = link_to 'miniブログを作成する', new_blog_path
 = paginate @blogs

@@ -1,0 +1,8 @@
+-if current_user.likes.where(blog_id: blog.id).present?
+	= form_with(model: current_user.likes.find{|i| i.blog_id ==  blog.id}, method: :delete) do |f|
+		= f.submit "いいね#{blog.users_like.count}"
+-else
+	= form_with(model: current_user.likes.build(blog_id: blog.id)) do |f|
+		= f.hidden_field :blog_id
+		= f.submit "いいね#{blog.users_like.count}"
+= link_to 'いいね詳細', likes_path(blog_id: blog)
