@@ -4,7 +4,8 @@ class LikesController < ApplicationController
     if like.save
       redirect_to blogs_path
     else
-      @blogs = Blog.where(user_id: [current_user, *current_user.followings.ids]).page(params[:page])
+      follow_blogs_include_mine = Blog.where(user_id: [current_user.id, *current_user.followings.ids])
+      @blogs = follow_blogs_include_mine.page(params[:page])
       render 'blogs/index'
     end
 

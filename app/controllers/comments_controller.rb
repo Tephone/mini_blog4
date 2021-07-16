@@ -1,8 +1,12 @@
 class CommentsController < ApplicationController
   def create
+    @blog = Blog.find(params[:comment][:blog_id])
     comment = current_user.comments.build(params.require(:comment).permit(:blog_id, :content))
     if comment.save
-      redirect_to blog_path(params[:comment][:blog_id]), notice: 'コメントしました'
+      redirect_to blog_path(@blog), notice: 'コメントしました'
+    else
+      @comments = @blog.comments
+      render 'blogs/show'
     end
   end
 
