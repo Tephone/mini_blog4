@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: mini_blog4_production
+  database: dv3_branch_production
   username: mini_blog4
   password: <%= ENV['MINI_BLOG4_DATABASE_PASSWORD'] %>
