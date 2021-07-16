@@ -8,7 +8,6 @@ class LikesController < ApplicationController
       @blogs = follow_blogs_include_mine.page(params[:page])
       render 'blogs/index'
     end
-
   end
 
   def destroy
