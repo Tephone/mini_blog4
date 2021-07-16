@@ -32,11 +32,13 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'haml-rails'
 gem 'kaminari'
+gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'sgcop', github: 'SonicGarden/sgcop'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -48,6 +50,7 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'letter_opener_web'
 end
 
 group :test do
