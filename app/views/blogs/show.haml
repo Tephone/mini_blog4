@@ -1,0 +1,5 @@
+= @blog.content
+= render 'comments/comment_form', blog: @blog
+- @blog.comments.each do |comment|
+  %p= comment.content
+  = link_to '削除', comment_path(comment), class: 'btn btn-danger btn-sm', method: :delete

@@ -2,7 +2,8 @@
 - @blogs.each do |blog|
   %p= l blog.created_at
   %p= blog.content
-  -if user_signed_in? && current_user != blog.user
-    = render 'relationships/follow_form', user:blog.user
+  - if user_signed_in? && current_user != blog.user
+    = render 'relationships/follow_form', user: blog.user
+    = link_to 'コメント', blog_path(blog)
 = link_to 'miniブログを作成する', new_blog_path
 = paginate @blogs
