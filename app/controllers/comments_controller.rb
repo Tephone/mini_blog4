@@ -1,18 +1,28 @@
 class CommentsController < ApplicationController
   def create
     @blog = Blog.find(params[:comment][:blog_id])
-    comment = current_user.comments.build(params.require(:comment).permit %i(blog_id content))
+    comment = current_user.comments.build(comment_params)
     if comment.save
       redirect_to blog_path(@blog)
-    else
-      @comments = @blog.comments
+    else      
       render 'blogs/show'
     end
   end
 
   def destroy
     comment = Comment.find(params[:id])
-    comment.destroy!
-    redirect_to blog_path(comment.blog)
+    if current_user == comment.user
+      comment.destroy
+      redirect_to blog_path(comment.blog)
+    else
+      @blog = comment.blog
+      render 'blogs/show'
+    end
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit %i(blog_id content)
   end
 end
