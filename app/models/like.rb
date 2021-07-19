@@ -1,5 +1,5 @@
 class Like < ApplicationRecord
   belongs_to :user
   belongs_to :blog
-  validates :user_id, uniquness: {scope: :blog_id}
+  validates_uniqueness_of :blog_id, scope: :user_id
 end
