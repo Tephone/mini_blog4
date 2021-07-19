@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     if comment.save
       ContactMailer.comment_mail(@blog).deliver
       redirect_to blog_path(@blog)
-    else      
+    else
       render 'blogs/show'
     end
   end
@@ -24,6 +24,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit %i(blog_id content)
+    params.require(:comment).permit %i[blog_id content]
   end
 end

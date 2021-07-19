@@ -15,7 +15,7 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = current_user.blogs.build(params.require(:blog).permit %i(content image image_chache))
+    @blog = current_user.blogs.build(params.require(:blog).permit(%i[content image image_chache]))
     if @blog.save
       redirect_to blogs_path, notice: 'miniブログを作成しました'
     else

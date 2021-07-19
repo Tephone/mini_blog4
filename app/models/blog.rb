@@ -4,5 +4,5 @@ class Blog < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   validates :content, presence: true,
-                      length: {maximum: 140}
+                      length: { maximum: 140 }
 end
