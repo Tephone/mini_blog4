@@ -1,0 +1,4 @@
+= form_with(model: blog.comments.new) do |f|
+  = f.hidden_field :blog_id
+  = f.text_field :content
+  = f.submit 'コメント'
