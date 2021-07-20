@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: '/inbox' if Rails.env.development?
-  devise_for :users, controllers: {registrations: 'users/registrations'}
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: %i[index show]
   root 'blogs#index'
   resources :blogs, only: %i[index new create show]
