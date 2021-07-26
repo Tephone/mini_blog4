@@ -12,4 +12,5 @@
   %p
     ブログURL：
     = link_to @user.blog_url, @user.blog_url
-  = link_to '編集', edit_user_registration_path, class: 'btn btn-primary'
+  = link_to edit_user_registration_path do
+    .far.fa-edit 

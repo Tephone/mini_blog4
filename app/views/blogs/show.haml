@@ -9,4 +9,5 @@
     .card.w-75.mx-auto.shadow-sm.p-3.mb-3.bg-white.rounded
       %p= comment.content
       - if current_user == comment.user
-        = link_to '削除', comment_path(comment.id), method: :delete, class: "text-right"
+        = link_to  comment_path(comment.id), class: 'text-right', method: :delete do
+          %i.fas.fa-trash-alt

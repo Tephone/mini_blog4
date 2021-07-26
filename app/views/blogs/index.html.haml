@@ -8,9 +8,15 @@
       %p= image_tag blog.image.url if blog.image.present?
 
       - if user_signed_in? && current_user != blog.user
-        = render 'relationships/follow_form', user: blog.user
-        = render 'likes/like_form', blog: blog
-        = link_to 'コメント', blog_path(blog)
+        .row
+          .col
+            = button_to blog_path(blog), method: :get do
+              .fas.fa-search-plus
+          .col   
+            = render 'likes/like_form', blog: blog             
+          .col
+            = render 'relationships/follow_form', user: blog.user          
 %br
-= link_to 'miniブログを作成する', new_blog_path, class: 'btn btn-primary'
+= link_to "miniブログを作成する", new_blog_path, class: 'btn btn-primary'
+
 = paginate @blogs

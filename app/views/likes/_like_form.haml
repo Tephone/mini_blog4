@@ -2,8 +2,12 @@
 - current_user_like = current_user.likes.find { |like| like.blog_id == blog.id }
 - if current_user_like.present?
   = form_with(model: current_user_like, method: :delete) do |f|
-    = f.submit "いいね#{blog.likes.count}"
+    = f.button type: 'submit' do
+      .far.fa-thumbs-up
+      #{blog.likes.count}
 - else
   = form_with(model: blog.likes.new) do |f|
     = f.hidden_field :blog_id
-    = f.submit "いいね#{blog.likes.count}"
+    = f.button type: 'submit' do
+      .far.fa-thumbs-up
+      #{blog.likes.count}
