@@ -1,5 +1,5 @@
 %br
-.card.mx-auto.shadow.p-4.mb-5.bg-white.rounded
+.mx-auto.shadow.p-4.mb-5.bg-white.rounded
   %p
     名前：
     = @user.name
@@ -12,4 +12,4 @@
   %p
     ブログURL：
     = link_to @user.blog_url, @user.blog_url
-  = link_to '編集', edit_user_registration_path
+  = link_to '編集', edit_user_registration_path, class: 'btn btn-primary'
