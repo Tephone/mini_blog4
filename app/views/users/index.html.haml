@@ -1,6 +1,9 @@
-%h2 ユーザー一覧
+
+%br
 - @users.each do |user|
   - unless current_user == user
-    %p= user.name
-    = render 'relationships/follow_form', user: user
+    .card.mx-auto.shadow-sm.bg-white.rounded{style: 'width: 16rem;'}
+      .card-body
+        %p= user.name
+        = render 'relationships/follow_form', user: user
 = paginate @users

@@ -1,6 +1,12 @@
-%p= @blog.content
-= render 'comments/comment_form', blog: @blog
-- @blog.comments.each do |comment|
-  %p= comment.content
-  - if current_user == comment.user
-    = link_to '削除', comment_path(comment.id), class: 'btn btn-danger btn-sm', method: :delete
+.text-center
+  %p= @blog.content
+  %p= image_tag @blog.image.url if @blog.image.present?
+
+  = render 'comments/comment_form', blog: @blog
+  %br
+  
+  - @blog.comments.each do |comment|
+    .card.mx-auto.shadow-sm.mb-3.bg-white.rounded{style: 'width: 16rem;'}
+      %p= comment.content
+      - if current_user == comment.user
+        = link_to '削除', comment_path(comment.id), class: 'btn btn-danger btn-sm', method: :delete
