@@ -4,10 +4,12 @@
   = form_with(model: current_user_like, method: :delete) do |f|
     = f.button type: 'submit' do
       .far.fa-thumbs-up
+      いいね！
       #{blog.likes.count}
 - else
   = form_with(model: blog.likes.new) do |f|
     = f.hidden_field :blog_id
     = f.button type: 'submit' do
       .far.fa-thumbs-up
+      いいね！
       #{blog.likes.count}

@@ -11,7 +11,8 @@
         .row
           .col
             = button_to blog_path(blog), method: :get do
-              .fas.fa-search-plus
+              %i.far.fa-comment-alt
+              コメントする
           .col   
             = render 'likes/like_form', blog: blog             
           .col
