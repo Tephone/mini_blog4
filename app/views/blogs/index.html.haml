@@ -6,17 +6,20 @@
       %p= l blog.created_at
       %p= blog.content
       %p= image_tag blog.image.url if blog.image.present?
-
-      - if user_signed_in? && current_user != blog.user
-        .row
-          .col
-            = button_to blog_path(blog), method: :get do
-              %i.far.fa-comment-alt
-              コメントする
+      .row
+        .col
+          = button_to blog_path(blog), method: :get do
+            %i.fas.fa-search-plus
+            詳細表示
+        - if user_signed_in? && current_user != blog.user
           .col   
-            = render 'likes/like_form', blog: blog             
+            = render 'likes/like_form', blog: blog 
           .col
-            = render 'relationships/follow_form', user: blog.user          
+            = render 'relationships/follow_form', user: blog.user
+      - if user_signed_in? && current_user == blog.user
+        .text-right
+          = link_to blog_path(blog), method: :delete do
+            %i.fas.fa-trash-alt
 %br
 = link_to "miniブログを作成する", new_blog_path, class: 'btn btn-primary'
 

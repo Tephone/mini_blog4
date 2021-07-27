@@ -1,11 +1,10 @@
 .text-center
   %p= @blog.content
   %p= image_tag @blog.image.url if @blog.image.present?
-
+  = link_to '編集', edit_blog_path(@blog) if current_user == @blog.user
   = render 'comments/comment_form', blog: @blog
-  %br
-  
-  - @blog.comments.each do |comment|
+  %br  
+  - @blog.comments.all.each do |comment|
     .card.w-75.mx-auto.shadow-sm.p-3.mb-3.bg-white.rounded
       %p= comment.content
       - if current_user == comment.user
