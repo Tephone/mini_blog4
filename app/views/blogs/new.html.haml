@@ -1,13 +1,16 @@
-
-%h3 miniブログ作成画面
-- if @blog.errors.any?
-  - @blog.errors.full_messages.each do |msg|
-    %ul
-      %li= msg
-= form_with(model: @blog) do |f|
-  %p
-    = f.label :content
-    = f.text_field :content
-  %p
-    = f.file_field :image
-  = f.submit
+.pt-4
+  .text-center.shadow.p-3.mb-3.bg-white.rounded
+    %h4
+      miniブログ作成画面
+      .far.fa-edit 
+    
+    - if @blog.errors.any?
+      - @blog.errors.full_messages.each do |msg|
+        %ul
+          %li= msg
+    = form_with(model: @blog) do |f|
+      %p
+        = f.text_area :content, class: 'form-control', placeholder: "<タイトル>&#13;&#10---&#13;&#10<内容>&#13;&#10---".html_safe
+      %p
+        = f.file_field :image
+      = f.submit '作成', class: 'form-control btn-sm btn-primary'

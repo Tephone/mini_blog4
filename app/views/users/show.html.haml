@@ -1,14 +1,16 @@
-%h3 マイページ
-%p
-  名前：
-  = @user.name
-%p
-  Eメール：
-  = @user.email
-%p
-  プロフィール：
-  = @user.profile
-%p
-  ブログURL：
-  = link_to @user.blog_url, @user.blog_url
-= link_to '編集', edit_user_registration_path
+.pt-4
+  .mx-auto.shadow.p-4.mb-5.bg-white.rounded
+    %p
+      名前：
+      = @user.name
+    %p
+      Eメール：
+      = @user.email
+    %p
+      プロフィール：
+      = @user.profile
+    %p
+      ブログURL：
+      = link_to @user.blog_url, @user.blog_url
+    = link_to edit_user_registration_path do
+      .far.fa-edit 
