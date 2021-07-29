@@ -1,26 +1,24 @@
-%br
-%br
-- @blogs.each do |blog|
-  .card.shadow.p-3.mb-3.bg-white.rounded
-    .card-body
-      %p= l blog.created_at
-      %p= blog.content
-      %p= image_tag blog.image.url if blog.image.present?
-      .row
-        .col
-          = button_to blog_path(blog), method: :get do
-            %i.fas.fa-search-plus
-            詳細表示
-        - if user_signed_in? && current_user != blog.user
-          .col   
-            = render 'likes/like_form', blog: blog 
+.p-4
+  - @blogs.each do |blog|
+    .card.shadow.px-5.mb-3.bg-white.rounded
+      .card-body
+        %p= l blog.created_at
+        %p= blog.content
+        %p= image_tag blog.image.url if blog.image.present?
+        .row
           .col
-            = render 'relationships/follow_form', user: blog.user
-      - if user_signed_in? && current_user == blog.user
-        .text-right
-          = link_to blog_path(blog), method: :delete do
-            %i.fas.fa-trash-alt
-%br
-= link_to "miniブログを作成する", new_blog_path, class: 'btn btn-primary'
+            = button_to blog_path(blog), method: :get do
+              %i.fas.fa-search-plus
+              詳細表示
+          - if user_signed_in? && current_user != blog.user
+            .col   
+              = render 'likes/like_form', blog: blog 
+            .col
+              = render 'relationships/follow_form', user: blog.user
+        - if user_signed_in? && current_user == blog.user
+          .text-right
+            = link_to blog_path(blog), method: :delete do
+              %i.fas.fa-trash-alt
+  = link_to "miniブログを作成する", new_blog_path, class: 'btn btn-primary'
 
-= paginate @blogs
+  = paginate @blogs

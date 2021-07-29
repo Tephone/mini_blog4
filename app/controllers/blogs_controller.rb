@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index]
-  before_action :blog_params_id, only: %i[show edit update]
+  before_action :set_current_user_blog, only: %i[edit update destroy]
 
   def index
     @blogs = if user_signed_in?
@@ -32,25 +32,24 @@ class BlogsController < ApplicationController
 
   def update
     if @blog.update(blog_params)
-      redirect_to blogs_path
+      redirect_to blogs_path, notice: 'mini_blogを更新しました'
     else
       render :edit
     end
   end
 
   def destroy
-    @blog = current_user.blogs.find(params[:id])
     @blog.destroy!
-    redirect_to blogs_path
+    redirect_to blogs_path, notice: 'mini_blogを削除しました'
   end
 
   private
   
   def blog_params
-    params.require(:blog).permit(%i[content image image_cache])
+    params.require(:blog).permit(%i[content image])
   end
 
-  def blog_params_id
-    @blog = Blog.find(params[:id])
+  def set_current_user_blog
+    @blog = current_user.blogs.find(params[:id])
   end
 end
